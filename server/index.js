@@ -10,30 +10,39 @@ dotenv.config();
 
 const app = express();
 
-// database
+/* ================= DATABASE ================= */
 mongoDB();
 
-// middlewares
-app.use(cors());
+/* ================= MIDDLEWARES ================= */
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://YOUR-FRONTEND.vercel.app"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
-// request logger (MOVE UP)
+/* ================= LOGGER ================= */
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
 
-// routes
+/* ================= ROUTES ================= */
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/data", resumeRoutes);
 
-// error handler
+/* ================= ERROR HANDLER ================= */
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something went wrong" });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on http://localhost:${process.env.PORT}`);
+/* ================= SERVER ================= */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
