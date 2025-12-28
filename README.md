@@ -1,64 +1,136 @@
-# Resume Builder
+Resume Builder – MERN Stack
+A full-stack Resume Builder web application that allows users to create, edit, and manage professional resumes with a clean UI and secure authentication.
+Built using the MERN stack (MongoDB, Express, React, Node.js) with modern UI and best practices.
 
-## Description
-Resume Builder is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their resumes online, providing a streamlined interface for adding personal information, education history, work experience, and skills.
+🚀 Features
 
-The application features a responsive design, ensuring a seamless user experience across different devices. Users can register, log in securely, and save their resume data for future editing. The data is stored in MongoDB Atlas, a cloud-hosted database service.
+🔐 Authentication
+User Register & Login
+Secure password hashing using bcrypt
+JWT-based authentication
+Protected routes for logged-in users
 
-This repository contains the frontend and backend code for the Resume Builder project.
+📝 Resume Builder
+Create and update:
+Profile details
+Education
+Skills
+Projects
+Experience
+Extra details
+Auto-save resume data
+Fetch saved resume on login
 
-## Demo
-Check out the live demo here: https://resume-builder-2024.vercel.app/
+🎨 User Interface
+Modern landing page with full-screen background
+Clean and professional UI
+Responsive design (desktop & mobile)
+Smooth animations using Framer Motion
+Styled using Material UI + custom CSS
 
-Screenshots
-### 1.Landing Page
-![image](https://github.com/AbhijitKhyade/Resume-Builder-MERN/assets/129264746/147f3767-177b-4201-bfd7-e327233d89c1)
+☁️ Backend
+RESTful APIs using Express
+MongoDB for data storage
+Centralized error handling
 
-### 2.Education Section
-![image](https://github.com/AbhijitKhyade/Resume-Builder-MERN/assets/129264746/37f43087-fa50-4bd2-818d-82d3e764b2ee)
+Environment-based configuration
 
-### 3.Project Section
-![image](https://github.com/AbhijitKhyade/Resume-Builder-MERN/assets/129264746/c9be87c5-36a2-483c-9a27-99215321fbec)
-### 4.Resume Data
-![image](https://github.com/AbhijitKhyade/Resume-Builder-MERN/assets/129264746/11d307dd-b942-4ff0-a761-1c00726d6911)
+🛠 Tech Stack
+Frontend
+React (Vite)
+Redux Toolkit
+React Router DOM
+Material UI (MUI)
+Framer Motion
+Axios
 
+Backend
+Node.js
+Express.js
+MongoDB (Mongoose)
+JWT Authentication
+bcryptjs
 
-## Technologies Used
-  Frontend: React.js, React Router, Axios, Bootstrap
-  Backend: Node.js, Express.js, MongoDB, Mongoose
-  Deployment: Vercel (Frontend), Heroku (Backend), MongoDB Atlas (Database)
+Tools & Deployment
+Vite
+Git & GitHub
+Render (Backend)
+Vercel / Localhost (Frontend)
 
-## Features
-  1)User authentication (register, login, logout)
-  2)Create, update, and delete resume sections
-  3)Responsive design for mobile and desktop
-  4)Secure data storage using MongoDB Atlas
-  5)Download resume pdf and edit is available
-  6)Two Professional Like Resume Formats
+📂 Project Structure
+Resume-Builder/
+│
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── assets/         # Images & static files
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Pages (Landing, Auth, Resume)
+│   │   ├── redux/          # Redux slices & store
+│   │   ├── styles/         # CSS files
+│   │   └── App.jsx
+│
+├── server/                 # Node.js backend
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── config/
+│   └── index.js
+│
+└── README.md
 
-## Installation
-To run this project locally, follow these steps:
+⚙️ Environment Variables
+Backend (server/.env)
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 
-Clone the repository:
-  git clone https://github.com/your-username/resume-builder.git
-  Install dependencies for both frontend and backend:
+▶️ Run Locally
+1️⃣ Clone the repository
+git clone https://github.com/your-username/Resume-Builder-MERN.git
+cd Resume-Builder-MERN
 
-cd client
-npm install
-cd ../server
-npm install
-
-Set up environment variables:
-
-Create a .env file in the backend directory.
-Add your MongoDB connection URI, JWT secret, and any other necessary variables.
-
-Start the development servers:
-## Start backend server (runs on http://localhost:8080)
+2️⃣ Backend setup
 cd server
-npm start
+npm install
+npm run dev
 
-## Start frontend development server (runs on http://localhost:3000)
+3️⃣ Frontend setup
 cd client
-npm start
-Open your browser and navigate to http://localhost:3000 to view the application.
+npm install
+npm run dev
+
+Frontend will run on:
+http://localhost:5173
+
+Backend will run on:
+http://localhost:5000
+
+🔌 API Endpoints
+Auth
+POST /api/auth/register – Register user
+POST /api/auth/login – Login user
+Resume
+GET /api/data/get-all-resume-data
+POST /api/data/save-resume-data
+
+🧪 Testing
+API tested using Postman
+Manual UI testing for:
+Authentication
+Resume creation
+Data persistence
+
+🎯 Learning Outcomes
+Full MERN authentication flow
+Redux state management
+REST API design
+UI/UX improvements for real products
+Deployment & environment configuration
+
+👩‍💻 Author
+Priyanka Mandal
+Full Stack Developer (MERN)
+GitHub: https://github.com/Priyanka-Mandal06
+
+📜 License
+This project is for learning and portfolio purposes.
