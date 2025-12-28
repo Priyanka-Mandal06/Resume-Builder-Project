@@ -1,12 +1,11 @@
+require("dotenv").config(); // ✅ MUST BE FIRST
+
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoDB = require("./config/db");
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const resumeRoutes = require("./routes/resume.route");
-
-dotenv.config();
 
 const app = express();
 
