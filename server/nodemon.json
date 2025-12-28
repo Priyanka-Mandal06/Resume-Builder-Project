@@ -1,0 +1,9 @@
+{
+  "watch": ["index.js", "routes", "controllers", "models"],
+  "ignore": [
+    "node_modules",
+    ".env",
+    "logs",
+    "*.log"
+  ]
+}
