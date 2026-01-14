@@ -1,5 +1,5 @@
-const puppeteer = require('puppeteer');
-const User = require('../models/user.model');
+const puppeteer = require("puppeteer");
+const User = require("user.model");
 
 const generateResume = async (req, res) => {
   const { htmlContent } = req.body;
@@ -501,29 +501,32 @@ body {
   try {
     // Launch Puppeteer and generate PDF
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
       headless: true,
-      timeout: 60000 // 60 seconds timeout
+      timeout: 60000, // 60 seconds timeout
     });
 
     const page = await browser.newPage();
 
     await page.setContent(htmlWithCss, {
-      waitUntil: 'networkidle0', // Wait until the network is idle
-      timeout: 60000 // 60 seconds timeout
+      waitUntil: "networkidle0", // Wait until the network is idle
+      timeout: 60000, // 60 seconds timeout
     });
 
-    const pdfBuffer = await page.pdf({ format: 'A4' });
+    const pdfBuffer = await page.pdf({ format: "A4" });
 
     await browser.close();
 
     // Send PDF as response
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=user-resume.pdf');
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=user-resume.pdf"
+    );
     res.send(pdfBuffer);
   } catch (error) {
-    console.error('Error generating PDF:', error.message);
-    res.status(500).send('Error generating PDF. Please try again later.');
+    console.error("Error generating PDF:", error.message);
+    res.status(500).send("Error generating PDF. Please try again later.");
   }
 };
 
@@ -535,17 +538,21 @@ const updateUser = async (req, res) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      return res.status(404).send('User not found');
+      return res.status(404).send("User not found");
     }
 
-    const updatedUser = await User.findByIdAndUpdate(id, { username, password }, { new: true }).select('-password');
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { username, password },
+      { new: true }
+    ).select("-password");
 
     res.json(updatedUser);
   } catch (error) {
-    console.error('Error updating user:', error.message);
-    res.status(500).send('Error updating user. Please try again later.');
+    console.error("Error updating user:", error.message);
+    res.status(500).send("Error updating user. Please try again later.");
   }
-}
+};
 
 const getUser = async (req, res) => {
   const { id } = req.params;
@@ -553,15 +560,15 @@ const getUser = async (req, res) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      return res.status(404).send('User not found');
+      return res.status(404).send("User not found");
     }
     const userData = {
       username: user.username,
     };
     res.json(userData);
   } catch (error) {
-    console.error('Error fetching user:', error.message);
-    res.status(500).send('Error fetching user. Please try again later.');
+    console.error("Error fetching user:", error.message);
+    res.status(500).send("Error fetching user. Please try again later.");
   }
 };
 
@@ -573,19 +580,22 @@ const feedbacks = async (req, res) => {
     const user = await User.findById(id);
     // console.log(user);
     if (!user) {
-      return res.status(404).send('User not found');
+      return res.status(404).send("User not found");
     }
 
-    await User.findByIdAndUpdate(id, {
-      feedback,
-    }, { new: true });
+    await User.findByIdAndUpdate(
+      id,
+      {
+        feedback,
+      },
+      { new: true }
+    );
 
-    res.send({ message: 'Feedback submitted successfully' });
+    res.send({ message: "Feedback submitted successfully" });
   } catch (error) {
-    console.error('Error updating user:', error.message);
-    res.status(500).send('Error updating user. Please try again later.');
-
+    console.error("Error updating user:", error.message);
+    res.status(500).send("Error updating user. Please try again later.");
   }
-}
+};
 
 module.exports = { generateResume, updateUser, getUser, feedbacks };
