@@ -10,7 +10,7 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import SignIn from "./pages/Auth/SignIn";
-import SignUp from "./pages/Auth/SignUp"; // ✅ ADD THIS
+import SignUp from "./pages/Auth/SignUp"; //
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
