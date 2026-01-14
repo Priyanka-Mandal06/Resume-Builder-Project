@@ -9,7 +9,8 @@ import { CircularProgress } from "@mui/material";
 export default function SignUp() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
+  // ✅ CHANGED: name -> username
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ export default function SignUp() {
 
     try {
       await axios.post(`${BASE_URL}/auth/register`, {
-        name,
+        username, // ✅ MUST MATCH BACKEND
         email,
         password,
       });
@@ -46,11 +47,12 @@ export default function SignUp() {
       <form style={styles.form} onSubmit={handleSubmit}>
         <h2 style={styles.heading}>Create Account</h2>
 
+        {/* ✅ CHANGED INPUT */}
         <input
           type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
           style={styles.input}
         />

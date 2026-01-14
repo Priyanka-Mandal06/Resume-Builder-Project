@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-const User = require("user.model");
+const User = require("../models/user.model");
 
 const generateResume = async (req, res) => {
   const { htmlContent } = req.body;
