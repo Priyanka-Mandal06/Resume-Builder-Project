@@ -1,45 +1,33 @@
-require("dotenv").config(); // ✅ MUST BE FIRST
+// ✅ MUST BE FIRST LINE
+require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const mongoDB = require("./config/db");
-const authRoutes = require("./routes/auth.route");
-const userRoutes = require("./routes/user.route");
-const resumeRoutes = require("./routes/resume.route");
+
+// ✅ Import DB connection
+const connectDB = require("./config/db");
 
 const app = express();
 
-/* ================= DATABASE ================= */
-mongoDB();
-
-/* ================= MIDDLEWARES ================= */
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://YOUR-FRONTEND.vercel.app"],
-    credentials: true,
-  })
-);
-
+// middleware
+app.use(cors());
 app.use(express.json());
 
-/* ================= LOGGER ================= */
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
+// ✅ Connect to MongoDB BEFORE routes
+connectDB();
 
-/* ================= ROUTES ================= */
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/data", resumeRoutes);
+// routes
+app.use("/api/auth", require("./routes/auth.route"));
+app.use("/api/users", require("./routes/user.route"));
+app.use("/api/resume", require("./routes/resume.route"));
 
-/* ================= ERROR HANDLER ================= */
+// error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something went wrong" });
 });
 
-/* ================= SERVER ================= */
+// ✅ REQUIRED FOR RENDER
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
