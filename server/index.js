@@ -12,14 +12,14 @@ const app = express();
 // ✅ CORS CONFIG (FIXES REGISTRATION ISSUE)
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://resume-builder-project-1whr-albf11v1.vercel.app",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    origin: true, // ✅ allow Vercel dynamically
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: false, // ✅ IMPORTANT: you are NOT using cookies
   })
 );
+
+// ✅ Handle preflight explicitly
+app.options("*", cors());
 
 // middleware
 app.use(express.json());
@@ -31,6 +31,11 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("Resume Builder API is running 🚀");
 });
+
+// 🔁 Keep Render alive (prevents cold start issues)
+setInterval(() => {
+  fetch("https://resume-builder-project-ys6t.onrender.com");
+}, 1000 * 60 * 10); // every 10 minutes
 
 // routes
 app.use("/api/auth", require("./routes/auth.route"));

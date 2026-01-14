@@ -20,11 +20,13 @@ export default function SignUp() {
     setLoading(true);
 
     try {
-      await axios.post(`${BASE_URL}/auth/register`, {
-        username, // ✅ MUST MATCH BACKEND
-        email,
-        password,
-      });
+      await axios.post(
+        `${BASE_URL}/auth/register`,
+        { username, email, password },
+        {
+          timeout: 15000, // ✅ handle Render wake-up
+        }
+      );
 
       toast.success("Registration successful! Please login.", {
         position: "top-left",
