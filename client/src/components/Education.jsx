@@ -55,8 +55,8 @@ const Education = () => {
   ];
   const otherFields = ["B.E.", "B.Tech", "BCA", "Bsc", "MBA", "M.Tech"];
 
-  const higherCollegeBoard = ["Maharashtra State Board", "CBSE", "ICSE", "Diploma"];
-  const schoolBoard = ["Maharashtra State Board", "CBSE", "ICSE"];
+  const higherCollegeBoard = ["Haryana State Board", "CBSE", "ICSE", "Diploma"];
+  const schoolBoard = ["Haryana State Board", "CBSE", "ICSE"];
 
   return (
     <div style={containerStyle}>
@@ -113,10 +113,10 @@ const Education = () => {
                   value={education.year}
                   onChange={handleChange}
                 >
-                  <MenuItem value="F.E">F.E</MenuItem>
-                  <MenuItem value="S.E">S.E</MenuItem>
-                  <MenuItem value="T.E">T.E</MenuItem>
-                  <MenuItem value="B.E">B.E</MenuItem>
+                  <MenuItem value="F.E">1st Year</MenuItem>
+                  <MenuItem value="S.E">2nd Year</MenuItem>
+                  <MenuItem value="T.E">3rd Year</MenuItem>
+                  <MenuItem value="B.E">4th Year</MenuItem>
                   <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
                 </TextField>
               </Grid>

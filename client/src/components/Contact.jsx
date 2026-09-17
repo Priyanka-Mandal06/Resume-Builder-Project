@@ -1,34 +1,27 @@
-import React from "react";
-import {
-  Container,
-  Typography,
-  IconButton,
-  Card,
-  CardContent,
-} from "@mui/material";
-import { Call, MailOutline, LinkedIn } from "@mui/icons-material";
+import { Call, LinkedIn, MailOutline } from '@mui/icons-material';
+import { Card, CardContent, Container, IconButton, Typography } from '@mui/material';
 
 const Contact = () => {
   const handleSocialMediaClick = (url) => {
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
 
   return (
     <Container
       sx={{
-        display: "flex",
-        justifyContent: "center",
+        display: 'flex',
+        justifyContent: 'center',
         // alignItems: "center",
         // background: "crimson",
-        width: "100%",
-        height: "80vh",
-        marginTop: "60px",
+        width: '100%',
+        height: '80vh',
+        marginTop: '60px',
       }}
     >
       <Card
         sx={{
           maxWidth: 400,
-          margin: "auto",
+          margin: 'auto',
           borderRadius: 4,
           padding: 3,
         }}
@@ -38,20 +31,19 @@ const Contact = () => {
             Contact Us
           </Typography>
           <Typography paragraph>
-            If you have any feedback or questions about our application, feel
-            free to contact us.
+            If you have any feedback or questions about our application, feel free to contact us.
           </Typography>
 
-          <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
+          <Typography variant="h6" gutterBottom style={{ marginTop: '20px' }}>
             Contact Information
           </Typography>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <IconButton
               sx={{
-                backgroundColor: "#FFECD6",
-                borderRadius: "50%",
-                padding: "10px",
+                backgroundColor: '#FFECD6',
+                borderRadius: '50%',
+                padding: '10px',
               }}
             >
               <Call />
@@ -61,17 +53,17 @@ const Contact = () => {
 
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-              marginTop: "10px",
+              display: 'flex',
+              alignItems: 'center',
+              gap: '20px',
+              marginTop: '10px',
             }}
           >
             <IconButton
               sx={{
-                backgroundColor: "#FFECD6",
-                borderRadius: "50%",
-                padding: "10px",
+                backgroundColor: '#FFECD6',
+                borderRadius: '50%',
+                padding: '10px',
               }}
             >
               <MailOutline />
@@ -81,28 +73,26 @@ const Contact = () => {
 
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-              marginTop: "10px",
+              display: 'flex',
+              alignItems: 'center',
+              gap: '20px',
+              marginTop: '10px',
             }}
           >
             <IconButton
               sx={{
-                backgroundColor: "#FFECD6",
-                borderRadius: "50%",
+                backgroundColor: '#FFECD6',
+                borderRadius: '50%',
 
-                padding: "10px",
+                padding: '10px',
               }}
               onClick={() =>
-                handleSocialMediaClick(
-                  "https://www.linkedin.com/in/priyanka-mandal-8bb266281/"
-                )
+                handleSocialMediaClick('https://www.linkedin.com/in/priyanka-mandal-8bb266281/')
               }
             >
               <LinkedIn />
             </IconButton>
-            <Typography>Linkden</Typography>
+            <Typography>LinkedIn</Typography>
           </div>
         </CardContent>
       </Card>
