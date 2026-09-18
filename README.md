@@ -2,6 +2,12 @@ Resume Builder – MERN Stack
 A full-stack Resume Builder web application that allows users to create, edit, and manage professional resumes with a clean UI and secure authentication.
 Built using the MERN stack (MongoDB, Express, React, Node.js) with modern UI and best practices.
 
+🚀 Live Demo
+
+🔗 **Live Application:** https://resume-builder-project-three.vercel.app/
+
+🔗 **GitHub Repository:** https://github.com/Priyanka-Mandal06/Resume-Builder-Project
+
 🚀 Features
 
 🔐 Authentication
